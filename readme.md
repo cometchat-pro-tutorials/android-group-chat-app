@@ -2,7 +2,7 @@
 
 This demo app is displaying how to easily implement group chat in your Android app using CometChat pro SDK
 
-![The screenshot](https://github.com/MilanVucic/CometChatDemoApp/blob/master/cometchat_screenshot.png "Screenshot of the app in action")
+![The screenshot](https://github.com/MilanVucic/CometChatDemoApp/blob/master/screenshots/cometchat_screenshot.png "Screenshot of the app in action")
 
 ## Technology
 - CometChat pro 1.3
