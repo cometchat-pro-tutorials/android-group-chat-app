@@ -15,6 +15,12 @@ This demo app is displaying how to easily implement group chat in your Android a
 
     3.1. Possibly install missing libraries
 4. Launch the project on the emulator or on the actual device
+5. [Head over to CometChat Pro and create an account](https://www.cometchat.com/pro?utm_source=github&utm_medium=example-code-readme)
+6. From the [dashboard](https://app.cometchat.com/?utm_source=github&utm_medium=example-code-readme), create a new app called "Kotlin Group Chat"
+7. Once created, click Explore
+8. Go to the API Keys tab and click Create API Key
+9. Create an API key called "Kotlin Group Chat Key" with Full Access
+10. Update `API_KEY` and `APP_ID` in `Constants` file with the new values
 
 ## Testing the functionality of the app:
 - Look at this line in MainActivity.kt ```val UID = "SUPERHERO5"```, that's where currently you can change the user, there's no UI for it for now

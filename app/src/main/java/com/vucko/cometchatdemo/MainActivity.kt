@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     private fun initCometChat() {
         // Initializes CometChat with the APP_ID from the dashboard
 
-        CometChat.init(this, GeneralConstans.APP_ID, object : CometChat.CallbackListener<String>() {
+        CometChat.init(this, GeneralConstants.APP_ID, object : CometChat.CallbackListener<String>() {
             override fun onSuccess(p0: String?) {
                 Log.d(TAG, "Initialization completed successfully")
                 // Upon success, login the dummy user, this is only for demo purposes
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         // This is where we can change which user gets logged in, again, in the real app or in some other version of this
         // we might have a login screen or something, for now it's just using pre-created CometChat users
         val UID = "SUPERHERO5"
-        CometChat.login(UID, GeneralConstans.API_KEY, object : CometChat.CallbackListener<User>() {
+        CometChat.login(UID, GeneralConstants.API_KEY, object : CometChat.CallbackListener<User>() {
             override fun onSuccess(user: User?) {
                 saveUser(user)
                 refreshGroupList()
