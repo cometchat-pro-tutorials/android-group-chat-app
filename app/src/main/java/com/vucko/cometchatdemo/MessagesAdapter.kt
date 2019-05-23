@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.models.TextMessage
 import kotlinx.android.synthetic.main.message_layout.view.*
 import java.text.SimpleDateFormat
@@ -37,7 +38,7 @@ class MessagesAdapter(var messages: MutableList<TextMessage?>, val context: Cont
         holder.timeTextView.text = timeFormat.format(Date(timeMilliseconds!!))
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         // Check if the sender is the current user
-        val currentUserId = sharedPreferences.getString("user_id", null)
+        val currentUserId = CometChat.getLoggedInUser()?.uid
 
         // If this is the current user's message, shift it to the right and paint it one color
         // If it's another user's message, shift left and use another color

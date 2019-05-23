@@ -93,7 +93,6 @@ class MainActivity : AppCompatActivity() {
         val UID = "SUPERHERO5"
         CometChat.login(UID, GeneralConstants.API_KEY, object : CometChat.CallbackListener<User>() {
             override fun onSuccess(user: User?) {
-                saveUser(user)
                 refreshGroupList()
             }
 
@@ -102,14 +101,5 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-    }
-
-    private fun saveUser(user: User?) {
-        // In order to have the logged in user. There may be a better way for this, but I hadn't found it in the docs
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        sharedPreferences
-            .edit()
-            .putString("user_id", user?.uid)
-            .apply()
     }
 }
