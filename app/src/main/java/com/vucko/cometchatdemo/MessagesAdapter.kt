@@ -36,7 +36,6 @@ class MessagesAdapter(var messages: MutableList<TextMessage?>, val context: Cont
         val timeMilliseconds = messages[position]?.sentAt?.times(1000)
         val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
         holder.timeTextView.text = timeFormat.format(Date(timeMilliseconds!!))
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         // Check if the sender is the current user
         val currentUserId = CometChat.getLoggedInUser()?.uid
 
