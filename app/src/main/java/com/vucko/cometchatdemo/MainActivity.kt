@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private val CREATE_GROUP = 1
 
-    lateinit var createGroupButton: Button
+//    lateinit var createGroupButton: Button
     lateinit var groupsRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        createGroupButton = findViewById(R.id.createGroupButton)
+//        createGroupButton = findViewById(R.id.createGroupButton)
         groupsRecyclerView = findViewById(R.id.groupsRecyclerView)
-        createGroupButton.setOnClickListener { openCreateGroupScreen() }
+//        createGroupButton.setOnClickListener { openCreateGroupScreen() }
         refreshGroupList()
     }
 
