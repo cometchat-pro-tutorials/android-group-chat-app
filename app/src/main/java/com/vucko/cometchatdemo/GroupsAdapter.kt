@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +25,9 @@ class GroupsAdapter(val groups: List<Group>?, val context: Context) : RecyclerVi
     }
 
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
-        holder.groupNameTextView.text = groups!!.get(position).name
+        holder.groupNameTextView.text = groups!![position].name
+        holder.descriptionTextView.text = groups[position].description
+
         val group = groups[position]
         // Depending on whether the group is joined or not, display "JOINED" text or not
         if (group.isJoined) {
@@ -73,6 +76,8 @@ class GroupsAdapter(val groups: List<Group>?, val context: Context) : RecyclerVi
 
 class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val groupNameTextView: TextView = itemView.groupNameTextView
+    val avatarImageView: ImageView = itemView.avatarImageView
+    val descriptionTextView: TextView = itemView.descriptionTextView
     val container: ConstraintLayout = itemView.container
     val joinedTextView: TextView = itemView.joinedTextView
 }

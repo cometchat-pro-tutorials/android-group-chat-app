@@ -3,8 +3,7 @@ package com.vucko.cometchatdemo
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceManager
-import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,13 +12,11 @@ import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.core.GroupsRequest
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.Group
-import com.cometchat.pro.models.User
+
 
 class MainActivity : AppCompatActivity() {
 
     private val CREATE_GROUP = 1
-
-    val TAG = "MainActivity"
 
     lateinit var createGroupButton: Button
     lateinit var groupsRecyclerView: RecyclerView
@@ -27,11 +24,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         createGroupButton = findViewById(R.id.createGroupButton)
         groupsRecyclerView = findViewById(R.id.groupsRecyclerView)
         createGroupButton.setOnClickListener { openCreateGroupScreen() }
-        initCometChat()
+        refreshGroupList()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -70,36 +68,15 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intent, CREATE_GROUP)
     }
 
-    private fun initCometChat() {
-        // Initializes CometChat with the APP_ID from the dashboard
-
-        CometChat.init(this, GeneralConstants.APP_ID, object : CometChat.CallbackListener<String>() {
-            override fun onSuccess(p0: String?) {
-                Log.d(TAG, "Initialization completed successfully")
-                // Upon success, login the dummy user, this is only for demo purposes
-                // In the real app, we would have a log in screen etc.
-                loginUser()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            // Respond to the action bar's Up/Home button
+            android.R.id.home -> {
+                onBackPressed()
+                return true
             }
-
-            override fun onError(p0: CometChatException?) {
-                Log.d(TAG, "Initialization failed with exception: " + p0?.message)
-            }
-        })
+        }
+        return super.onOptionsItemSelected(item)
     }
 
-    private fun loginUser() {
-        // This is where we can change which user gets logged in, again, in the real app or in some other version of this
-        // we might have a login screen or something, for now it's just using pre-created CometChat users
-        val UID = "SUPERHERO5"
-        CometChat.login(UID, GeneralConstants.API_KEY, object : CometChat.CallbackListener<User>() {
-            override fun onSuccess(user: User?) {
-                refreshGroupList()
-            }
-
-            override fun onError(p0: CometChatException?) {
-                Log.d(TAG, "Login failed with exception: " + p0?.message)
-            }
-
-        })
-    }
 }

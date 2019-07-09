@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">CometChatDemo</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="connect_with_people_around_the_world">Connect with people around the world</string>
+    <string name="this_is_a_sample_app_create_an_account_or_login_to_begin_chatting">This is a sample app. Create an account or login to begin chatting.</string>
+    <string name="log_in">Log in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="email">Email</string>
+    <string name="name_email_com">Name@email.com</string>
+    <string name="general">#General</string>
+    <string name="no_new_message">No new message?</string>
+    <string name="send_your_first_message_bellow">Send your first message bellow.</string>
+    <string name="type_something">Type something</string>
+    <string name="groups">Groups</string>
+    <string name="create_group">Create group</string>
+
 </resources>
