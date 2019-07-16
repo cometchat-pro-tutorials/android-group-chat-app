@@ -37,7 +37,7 @@ class MessagesAdapter(var messages: MutableList<TextMessage?>, val context: Cont
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         holder.messageTextView.text = messages[position]?.text
         // Check if the sender is the current user
-        Glide.with(context).load(messages[position]?.sender?.avatar).into(holder.avatarImageView)
+        Glide.with(context).load(GeneralConstants.AVATARS_URL + messages[position]?.sender?.name).into(holder.avatarImageView)
     }
 
     private fun isCurrentUserMessage(message: TextMessage?): Boolean {

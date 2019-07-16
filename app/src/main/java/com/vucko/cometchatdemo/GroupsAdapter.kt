@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.Group
@@ -27,6 +28,7 @@ class GroupsAdapter(val groups: List<Group>?, val context: Context) : RecyclerVi
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
         holder.groupNameTextView.text = groups!![position].name
         holder.descriptionTextView.text = groups[position].description
+        Glide.with(context).load(GeneralConstants.AVATARS_URL + groups[position].name).into(holder.avatarImageView)
 
         val group = groups[position]
         // Depending on whether the group is joined or not, display "JOINED" text or not
