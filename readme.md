@@ -35,4 +35,4 @@ This demo app is displaying how to easily implement group chat in your Android a
 ## Useful links
 - [Android docs](https://prodocs.cometchat.com/docs/android-quick-start)
 - [Android groups docs](https://prodocs.cometchat.com/docs/android-groups)
-- [Android tutorial] (https://www.cometchat.com/tutorials/building-a-real-time-android-group-chat-app/)
+- [Android tutorial](https://www.cometchat.com/tutorials/building-a-real-time-android-group-chat-app/)
