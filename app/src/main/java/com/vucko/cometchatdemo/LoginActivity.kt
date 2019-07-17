@@ -26,9 +26,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun attemptLogin() {
-
-        // This is where we can change which user gets logged in, again, in the real app or in some other version of this
-        // we might have a login screen or something, for now it's just using pre-created CometChat users
         val UID = usernameEditText.text.toString()
         CometChat.login(UID, GeneralConstants.API_KEY, object : CometChat.CallbackListener<User>() {
             override fun onSuccess(user: User?) {
@@ -38,7 +35,6 @@ class LoginActivity : AppCompatActivity() {
             override fun onError(p0: CometChatException?) {
                 Toast.makeText(this@LoginActivity, p0?.message, Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 

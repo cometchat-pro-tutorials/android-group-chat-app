@@ -52,20 +52,24 @@ class GroupsAdapter(val groups: List<Group>?, val context: Context) : RecyclerVi
         // Try to join the group
         CometChat.joinGroup(group.guid, group.groupType, group.password, object : CometChat.CallbackListener<Group>() {
             override fun onSuccess(p0: Group?) {
-                groups!!.forEach {
-                    // If successful, in order the show "JOINED" on that group, go through all of them, find the one we just joined,
-                    // And set Joined = true
-                    if (it.guid == group.guid) {
-                        it.setHasJoined(true)
-                        notifyDataSetChanged()
-                    }
-                }
+                updateJoinedStatus(group)
             }
 
             override fun onError(p0: CometChatException?) {
                 Toast.makeText(context, p0?.message, Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun updateJoinedStatus(group: Group) {
+        groups!!.forEach {
+            // If successful, in order the show "JOINED" on that group, go through all of them, find the one we just joined,
+            // And set Joined = true
+            if (it.guid == group.guid) {
+                it.setHasJoined(true)
+                notifyDataSetChanged()
+            }
+        }
     }
 
     private fun goToGroupScreen(group: Group) {
