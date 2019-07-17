@@ -23,12 +23,9 @@ This demo app is displaying how to easily implement group chat in your Android a
 10. Update `API_KEY` and `APP_ID` in `Constants` file with the new values
 
 ## Testing the functionality of the app:
-- Look at this line in MainActivity.kt ```val UID = "SUPERHERO5"```, that's where currently you can change the user, there's no UI for it for now
-- Install on 1 emulator as some user e.g. "SUPERHERO1" (which is the test user for CometChat added by default
-- Create a group by tapping on the button
-- Install the app again on the second emulator using some other user ("SUPERHERO2")
-- You should see the group from user2 that user1 has created
-- Tap on it to join the group
+- Install on 1 emulator (or physical device) and log in as "SUPERHERO1" (which is the test user for CometChat added by default)
+- Install the app again on the second device and log in as some other user ("SUPERHERO2","SUPERHERO3","SUPERHERO4" or "SUPERHERO5")
+- Tap on a group to join it
 - Tap again to enter the group chat
 - Start chatting
 
