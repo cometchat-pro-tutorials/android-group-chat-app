@@ -3,11 +3,12 @@
     <color name="color_dark_grey">#2D313F</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">@color/main_blue_color</color>
     <color name="my_message_color">#0FCF78</color>
     <color name="other_message_color">#00A5FF</color>
     <color name="main_blue_color">#1B47DB</color>
     <color name="button_pressed_color">#577AF3</color>
+    <color name="button_disabled_color">#858585</color>
     <color name="color_light_blue_darker">#BDCCD7</color>
     <color name="color_light_blue_darker_transparent">#1ABDCCD7</color>
     <color name="color_light_blue">#ECF0FE</color>

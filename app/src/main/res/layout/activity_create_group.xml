@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
     tools:context=".CreateGroupActivity">
     <EditText
         android:id="@+id/groupNameEditText"
@@ -12,15 +13,19 @@
         android:layout_height="wrap_content"
         android:hint="Group name"/>
     <EditText
-        android:id="@+id/groupPasswordEditText"
+        android:id="@+id/groupDescriptionEditText"
         app:layout_constraintTop_toBottomOf="@id/groupNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Group password (can be empty)"/>
+        android:hint="Group description (can be empty)"/>
     <Button
         android:id="@+id/saveButton"
-        app:layout_constraintTop_toBottomOf="@id/groupPasswordEditText"
-        android:text="Save group"
+        app:layout_constraintTop_toBottomOf="@id/groupDescriptionEditText"
+        android:background="@drawable/custom_blue_button"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:text="@string/save_group"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <ProgressBar

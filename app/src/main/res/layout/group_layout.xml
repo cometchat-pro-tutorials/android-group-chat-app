@@ -15,15 +15,6 @@
         android:orientation="vertical"
         android:padding="@dimen/standard_padding">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatarImageView"
-            android:layout_width="@dimen/profile_image_size"
-            android:layout_height="@dimen/profile_image_size"
-            android:src="@drawable/avatar_placeholder"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/groupNameTextView"
             android:layout_width="wrap_content"
@@ -34,8 +25,8 @@
             android:textColor="@color/color_dark_grey"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@id/avatarImageView"
-            app:layout_constraintTop_toTopOf="@id/avatarImageView" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/joinedTextView"
@@ -59,7 +50,7 @@
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/avatarImageView"
+            app:layout_constraintStart_toStartOf="@id/groupNameTextView"
             app:layout_constraintTop_toBottomOf="@id/groupNameTextView" />
 
 

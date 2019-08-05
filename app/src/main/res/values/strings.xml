@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">CometChatDemo</string>
-    <string name="create_an_account">Create an account</string>
     <string name="connect_with_people_around_the_world">Connect with people around the world</string>
-    <string name="this_is_a_sample_app_create_an_account_or_login_to_begin_chatting">This is a sample app. Create an account or login to begin chatting.</string>
+    <string name="description_text">Android chat app built with Kotlin and CometChat. To login, use the username “superhero1” or “superhero2”. You can create new users and rooms from the CometChat dashboard or our platform API</string>
     <string name="log_in">Log in</string>
     <string name="sign_up">Sign up</string>
     <string name="email">Email</string>
@@ -13,5 +12,11 @@
     <string name="type_something">Type something</string>
     <string name="groups">Groups</string>
     <string name="create_group">Create group</string>
+    <string name="user_id">User ID:</string>
+    <string name="placeholder_uid">superhero1</string>
+    <string name="logging_in">Logging in...</string>
+    <string name="create_new_group">Create new group</string>
+    <string name="save_group">Save group</string>
+    <string name="saving_group">Saving group...</string>
 
 </resources>

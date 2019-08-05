@@ -70,6 +70,8 @@
         android:hint="@string/type_something"
         android:padding="@dimen/standard_padding"
         android:textSize="16sp"
+        android:imeOptions="actionSend"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/sendButton" />
@@ -79,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
-        android:background="?selectableItemBackground"
+        android:background="@android:color/transparent"
         android:src="@drawable/send_icon"
         app:layout_constraintBottom_toBottomOf="@id/messageEditText"
         app:layout_constraintRight_toRightOf="parent"

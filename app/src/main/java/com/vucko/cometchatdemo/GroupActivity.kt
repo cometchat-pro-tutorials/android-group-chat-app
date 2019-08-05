@@ -2,15 +2,19 @@ package com.vucko.cometchatdemo
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cometchat.pro.constants.CometChatConstants
 import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.core.GroupsRequest
 import com.cometchat.pro.core.MessagesRequest
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.BaseMessage
@@ -45,14 +49,23 @@ class GroupActivity : AppCompatActivity() {
             attemptSendMessage()
         }
 
-        getGroupDetails()
+        getGroupDetailsAndMessages()
         messagesAdapter = MessagesAdapter(ArrayList(), this)
         messagesRecyclerView.adapter = messagesAdapter
         messagesRecyclerView.layoutManager = LinearLayoutManager(this)
         noMessagesGroup = findViewById(R.id.noMessagesGroup)
+        messageEditText.setOnEditorActionListener {
+                _, actionId, _ ->
+            if(actionId == EditorInfo.IME_ACTION_SEND){
+                attemptSendMessage()
+                true
+            } else {
+                false
+            }
+        }
     }
 
-    private fun getGroupDetails() {
+    private fun getGroupDetailsAndMessages() {
         // Get the details of the group, such as name, members and other data that may be used in the app later
         // For now only the group name is used
 
@@ -67,27 +80,27 @@ class GroupActivity : AppCompatActivity() {
 
             }
         })
+        val messagesRequest = MessagesRequest.MessagesRequestBuilder().setGUID(groupId).build()
+        messagesRequest.fetchPrevious(object:CometChat.CallbackListener<List<BaseMessage>>(){
+            override fun onSuccess(p0: List<BaseMessage>?) {
+                if (!p0.isNullOrEmpty()) {
+                    for (baseMessage in p0) {
+                        if (baseMessage is TextMessage) {
+                            addMessage(baseMessage)
+                        }
+                    }
+                }
+
+            }
+            override fun onError(p0: CometChatException?) {
+                Toast.makeText(this@GroupActivity, p0?.message, Toast.LENGTH_SHORT).show()
+            }
+        })
 
     }
 
     private fun updateUI() {
         supportActionBar?.title = group?.name
-        fetchMessages()
-    }
-
-    private fun fetchMessages() {
-        val limit = 30
-        var messagesRequest = MessagesRequest.MessagesRequestBuilder().setGUID(group!!.guid).setLimit(limit).build()
-        messagesRequest?.fetchPrevious(object : CometChat.CallbackListener<List<BaseMessage>>() {
-            override fun onSuccess(p0: List<BaseMessage>?) {
-                if (p0 is TextMessage) {
-                    addMessage(p0)
-                }
-            }
-
-            override fun onError(p0: CometChatException?) {
-            }
-        })
     }
 
     private fun attemptSendMessage() {

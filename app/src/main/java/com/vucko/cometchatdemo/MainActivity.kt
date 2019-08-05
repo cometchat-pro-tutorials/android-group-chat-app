@@ -1,7 +1,10 @@
 package com.vucko.cometchatdemo
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -9,21 +12,40 @@ import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.core.GroupsRequest
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.Group
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private val CREATE_GROUP = 1
 
+    lateinit var createGroupButton: Button
     lateinit var groupsRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        createGroupButton = findViewById(R.id.createGroupButton)
         groupsRecyclerView = findViewById(R.id.groupsRecyclerView)
+
+        createGroupButton.setOnClickListener { openCreateGroupScreen() }
         refreshGroupList()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == CREATE_GROUP) {
+            // This happens if we've just created another group
+            // Then we should refresh groups
+            // Could've used onResume but then it would always refresh
+            refreshGroupList()
+        }
+    }
+
+    private fun openCreateGroupScreen() {
+        val intent = Intent(this, CreateGroupActivity::class.java)
+        startActivityForResult(intent, CREATE_GROUP)
     }
 
     private fun refreshGroupList() {
