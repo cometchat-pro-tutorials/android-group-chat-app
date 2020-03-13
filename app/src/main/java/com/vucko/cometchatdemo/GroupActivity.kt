@@ -109,10 +109,9 @@ class GroupActivity : AppCompatActivity() {
         if (!TextUtils.isEmpty(text)) {
             messageEditText.text.clear()
             val receiverID: String = group!!.guid
-            val messageType: String = CometChatConstants.MESSAGE_TYPE_TEXT
             val receiverType: String = CometChatConstants.RECEIVER_TYPE_GROUP
 
-            val textMessage = TextMessage(receiverID, text, messageType, receiverType)
+            val textMessage = TextMessage(receiverID, text, receiverType)
 
             CometChat.sendMessage(textMessage, object : CometChat.CallbackListener<TextMessage>() {
                 override fun onSuccess(p0: TextMessage?) {
